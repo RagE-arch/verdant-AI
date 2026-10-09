@@ -1,0 +1,10 @@
+{
+  "name": "Verdant AI — Nature Companion",
+  "short_name": "Verdant AI",
+  "description": "A local AI nature companion that helps you spend more time outside.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f8f2",
+  "theme_color": "#14251d",
+  "icons": [{"src":"/assets/leaf.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

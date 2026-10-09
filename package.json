@@ -1,0 +1,8 @@
+{
+  "name": "verdant-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A refined, local-first AI nature companion with outdoor missions and an exportable field journal.",
+  "scripts": { "start": "node server.js", "check": "node --check server.js && node --check script.js" },
+  "engines": { "node": ">=20" }
+}

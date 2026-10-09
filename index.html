@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14251d">
+  <meta name="description" content="Verdant AI is a private, local-first nature companion for outdoor missions, curious questions, and a personal field journal.">
+  <title>Verdant AI — Intelligence rooted in nature</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/leaf.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#home" aria-label="Verdant home">
+        <span class="brand-mark"><img src="assets/leaf.svg" alt=""></span>
+        <span class="brand-name">verdant<span>AI</span></span>
+      </a>
+      <div class="side-label">YOUR SPACE</div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-view="home"><span class="nav-icon">⌂</span> Overview</button>
+        <button class="nav-item" data-view="guide"><span class="nav-icon">✳</span> Nature guide</button>
+        <button class="nav-item" data-view="missions"><span class="nav-icon">◎</span> Field missions</button>
+        <button class="nav-item" data-view="journal"><span class="nav-icon">▤</span> Field journal <span class="nav-count" id="journalCount">0</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="outside-card">
+          <div class="outside-orb">☼</div>
+          <p class="outside-title">A little reminder</p>
+          <p class="outside-copy">The best discoveries happen when the screen goes away.</p>
+          <button class="text-button" id="startWalkBtn">Start a field break <span>↗</span></button>
+        </div>
+        <div class="privacy-note"><span class="privacy-dot"></span><span>Your notes stay on this device</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="home">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">☰</button>
+        <div class="breadcrumb">Your space <span>/</span> <strong id="pageName">Overview</strong></div>
+        <div class="topbar-right">
+          <div class="model-status" id="modelStatus"><span class="status-dot"></span><span id="statusText">Checking local AI…</span></div>
+          <div class="avatar" aria-label="Nature explorer">✦</div>
+        </div>
+      </header>
+
+      <section class="view active-view" id="view-home">
+        <div class="welcome-row">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> YOUR DAILY DOSE OF OUTSIDE</p>
+            <h1>Find your <em>outside.</em></h1>
+            <p class="subheading">A little curiosity can change the way you see the world.</p>
+          </div>
+          <div class="date-chip"><span class="sun-icon">☼</span><span id="todayLabel">A fresh day to explore</span></div>
+        </div>
+
+        <section class="hero-card">
+          <div class="hero-image" role="img" aria-label="Illustration of a sunlit forest and rolling green hills">
+            <div class="hero-sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div>
+            <div class="hero-tree tree-one">♣</div><div class="hero-tree tree-two">♣</div><div class="hero-tree tree-three">♣</div>
+            <div class="hero-stamp"><span>TAKE IT</span><strong>OUTSIDE</strong><span>✳ EVERY DAY</span></div>
+          </div>
+          <div class="hero-content">
+            <div class="hero-kicker"><span class="live-pip"></span> TODAY'S FIELD NOTE</div>
+            <h2>Slow down.<br>Look a little closer.</h2>
+            <p>Nature is full of tiny details hiding in plain sight. Your next discovery is closer than you think.</p>
+            <button class="primary-button" id="heroMissionBtn">Explore today's mission <span>↗</span></button>
+            <div class="hero-foot"><span>✦ 5–15 minutes</span><span>·</span><span>No special gear needed</span></div>
+          </div>
+        </section>
+
+        <div class="section-heading"><div><p class="eyebrow">YOUR OUTDOOR PRACTICE</p><h2>A small step, a wider world.</h2></div><span class="muted-caption">Progress, not perfection</span></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon green">◷</span><span class="stat-trend">ALL TIME</span></div><div class="stat-value"><span id="minutesStat">0</span><small>min</small></div><p>Outside time logged</p><div class="mini-track"><span id="minutesBar"></span></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon amber">✳</span><span class="stat-trend">LITTLE WINS</span></div><div class="stat-value"><span id="missionsStat">0</span><small>/ 7</small></div><p>Missions completed</p><div class="mini-track amber-track"><span id="missionsBar"></span></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon blue">▤</span><span class="stat-trend">YOUR COLLECTION</span></div><div class="stat-value"><span id="notesStat">0</span><small>notes</small></div><p>Moments you kept</p><div class="stat-footer">Every observation counts.</div></article>
+        </div>
+
+        <div class="lower-grid">
+          <section class="panel mission-panel" id="todayMissionPanel">
+            <div class="panel-heading"><div><p class="eyebrow">READY WHEN YOU ARE</p><h3>Today's field mission</h3></div><span class="pill">EASY DOES IT</span></div>
+            <div class="mission-art"><div class="mission-sun"></div><div class="mission-leaf leaf-a">✦</div><div class="mission-leaf leaf-b">✦</div><div class="mission-copy"><span class="mission-number">FIELD NOTE 001</span><h4>Notice the little things</h4><p>Find three different leaf shapes. Look at the edges, veins, and how the light falls across them.</p></div></div>
+            <div class="mission-meta"><span>◷ 5–10 min</span><span>⌁ Anywhere outdoors</span><button class="small-link" id="missionDetailsBtn">Mission details ↗</button></div>
+          </section>
+          <section class="panel guide-panel">
+            <div class="panel-heading"><div><p class="eyebrow">A CURIOSITY COMPANION</p><h3>Ask the nature guide</h3></div><span class="sparkle">✳</span></div>
+            <p class="guide-intro">Wondering why leaves change colour, how ants find their way, or what makes birds sing? Start with a question.</p>
+            <div class="prompt-list">
+              <button class="prompt-chip" data-prompt="Why do leaves have different shapes?">Why do leaves have different shapes? <span>↗</span></button>
+              <button class="prompt-chip" data-prompt="How can I observe birds without disturbing them?">How can I observe birds quietly? <span>↗</span></button>
+            </div>
+            <button class="outline-button full-button" id="openGuideBtn">Open nature guide <span>↗</span></button>
+            <p class="local-ai-caption"><span class="tiny-lock">⌑</span> Powered by a model on your computer</p>
+          </section>
+        </div>
+        <footer class="page-footer"><span>Intelligence rooted in nature.</span><span>VERDANT AI <span class="footer-leaf">✳</span></span></footer>
+      </section>
+
+      <section class="view" id="view-guide">
+        <div class="view-heading"><p class="eyebrow"><span class="eyebrow-line"></span> CURIOUS BY NATURE</p><h1>Your nature <em>guide.</em></h1><p class="subheading">Ask a question. Get a little wiser. Then go see it for yourself.</p></div>
+        <div class="chat-layout">
+          <div class="chat-card">
+            <div class="chat-top"><div class="guide-avatar">✳</div><div><strong>Verdant field guide</strong><span id="chatModelLabel">Local AI · checking connection</span></div><span class="chat-online" id="chatStatusDot"></span></div>
+            <div class="chat-messages" id="chatMessages" aria-live="polite">
+              <div class="message assistant-message"><div class="message-avatar">✳</div><div class="message-body"><span class="message-label">VERDANT</span><p>Hey, explorer. 🌱 What have you been wondering about lately? Ask me about plants, insects, birds, ecosystems, or ways to notice more on your next walk.</p><span class="message-time">Your local nature companion</span></div></div>
+            </div>
+            <div class="suggested-prompts"><span>TRY ASKING</span><button data-prompt="What are three things I can observe in a small park?">Things to notice in a park</button><button data-prompt="Why do birds fluff up their feathers?">Why birds fluff their feathers</button></div>
+            <form class="chat-form" id="chatForm"><label class="sr-only" for="chatInput">Ask the nature guide</label><textarea id="chatInput" rows="1" maxlength="4000" placeholder="Ask your nature question…" required></textarea><button class="send-button" id="sendButton" aria-label="Send question" type="submit">↑</button><div class="input-hint">Enter to send · Shift + Enter for a new line</div></form>
+          </div>
+          <aside class="guide-side"><div class="side-tip-card"><span class="tip-icon">☼</span><p class="eyebrow">A FIELD GUIDE RULE</p><h3>Observe gently.</h3><p>Leave plants, nests, insects, and wild animals undisturbed. A good discovery doesn't need to be touched.</p></div><div class="side-tip-card light-tip"><p class="eyebrow">TAKE THIS OUTSIDE</p><h3>Try a 60-second pause.</h3><p>Put your phone away. Notice one sound, one movement, and one detail you hadn't seen before.</p><button class="small-link" id="guideMissionBtn">Start a mission ↗</button></div><p class="privacy-small">⌑ Your questions are sent only to the local model endpoint on this computer. No cloud AI API is used by this app.</p></aside>
+        </div>
+      </section>
+
+      <section class="view" id="view-missions">
+        <div class="view-heading"><p class="eyebrow"><span class="eyebrow-line"></span> LITTLE ADVENTURES, REAL WORLD</p><h1>Field <em>missions.</em></h1><p class="subheading">Choose one small thing to notice. The world will do the rest.</p></div>
+        <div class="mission-banner"><div><span class="hero-kicker">YOUR ONLY GOAL</span><h2>Be here, not on here.</h2><p>Pick a mission, head outside when it's safe, and let curiosity lead.</p></div><div class="banner-flower">✳</div></div>
+        <div class="mission-grid" id="missionGrid"></div>
+      </section>
+
+      <section class="view" id="view-journal">
+        <div class="view-heading journal-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> SMALL THINGS WORTH KEEPING</p><h1>Your field <em>journal.</em></h1><p class="subheading">A collection of things you noticed when you slowed down.</p></div><div class="journal-actions"><button class="export-button" id="exportNotesBtn" type="button">↓ Export journal</button><button class="primary-button" id="newNoteBtn">+ Add a field note</button></div></div>
+        <div class="journal-summary"><div><span class="summary-icon">▤</span><div><strong id="journalSummaryCount">0 observations</strong><span>Saved on this device</span></div></div><span class="journal-privacy">⌑ PRIVATE BY DEFAULT</span></div>
+        <div class="journal-grid" id="journalGrid"></div>
+        <div class="empty-state" id="emptyJournal"><div class="empty-illustration">✳</div><h3>Your first field note is waiting.</h3><p>Notice something interesting outside? Save the moment here. No need for a perfect photo or a perfect description.</p><button class="outline-button" id="emptyNoteBtn">Write your first note ↗</button></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="noteModal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-heading"><div><p class="eyebrow">A MOMENT TO KEEP</p><h2 id="modalTitle">Add a field note</h2></div><button class="icon-button" id="closeModalBtn" aria-label="Close dialog">×</button></div>
+      <form id="noteForm"><label for="noteTitle">What did you notice?</label><input id="noteTitle" maxlength="80" placeholder="e.g. A tiny spider's web" required><label for="noteBody">Your observation</label><textarea id="noteBody" maxlength="1200" rows="4" placeholder="Where were you? What caught your attention?" required></textarea><div class="form-row"><div><label for="notePlace">Place (optional)</label><input id="notePlace" maxlength="100" placeholder="e.g. Neighbourhood park"></div><div><label for="noteMinutes">Minutes outside</label><input id="noteMinutes" type="number" min="0" max="600" value="10"></div></div><p class="form-privacy">⌑ This note is saved in your browser on this device.</p><div class="modal-actions"><button class="outline-button" id="cancelNoteBtn" type="button">Cancel</button><button class="primary-button" type="submit">Save field note <span>↗</span></button></div>
+      </form>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript><p class="noscript">Verdant AI needs JavaScript enabled for its interactive features.</p></noscript>
+</body>
+</html>
